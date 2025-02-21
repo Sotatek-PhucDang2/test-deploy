@@ -13,10 +13,11 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
-import { Menu, Search } from "lucide-react";
+import { Menu, Search,Settings,DollarSign,Globe } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
+import { Global } from "recharts";
 
 const ThemeToggle = dynamic(() => import("./theme-toggle"), { ssr: false });
 
@@ -38,21 +39,19 @@ export function Header() {
         <div className="flex items-center justify-between py-2 text-sm border-b">
           <div className="flex items-center gap-4">
             <span className="text-blue-700">ETH Price: ${"0.00"}</span>
+            <span className="text-green-600  rounded-full bg-green-100">+ ${"4.50%"}</span>
             <span className="text-muted-foreground">Gas: 0 Gwei</span>
           </div>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            {user ? (
-              <Button variant="outline" onClick={logout}>
-                {user.address.substring(0, 6)}...{user.address.substring(38)}
-              </Button>
-            ) : (
-              <Button variant="outline" onClick={login}>
-                Sign In
-              </Button>
-            )}
+          <div className="flex items-center gap-8">
+          <ThemeToggle />
+              
+              <span className="text-muted-foreground flex items-center gap-2 cursor-pointer" ><Settings size={16} />Setting</span>  
+              <span className="text-muted-foreground flex items-center gap-2 cursor-pointer"><DollarSign size={16}/>USD</span>
+              <span className="text-muted-foreground flex items-center gap-2 cursor-pointer"><Globe size ={16}/>English</span>
+            
           </div>
         </div>
+
 
         {/* Main header */}
         <div className="flex items-center justify-between py-4">
