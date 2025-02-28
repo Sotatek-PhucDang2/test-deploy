@@ -15,6 +15,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
 import { Menu, Search,Settings,DollarSign,Globe } from "lucide-react";
 import dynamic from "next/dynamic";
+import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { Global } from "recharts";
@@ -51,13 +52,19 @@ export function Header() {
             
           </div>
         </div>
+            {/* header */}
+            <div className="w-[1569px] h-[629px]  "
+            style={{
+              backgroundImage: "url('/Maskgroup.png')" 
+            }}>
+
 
 
         {/* Main header */}
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-4 ">
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold">Helios Explorer</span>
+            <Link href="/" className=" flex items-center gap-2 whitespace-nowrap">
+              <span className=" pl-4 text-2xl text-white font-bold">Heli<img src="Logo.png" className="inline-block w-4 h-4 translate-y-"/>s Explorer</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -75,7 +82,7 @@ export function Header() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Blockchain</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid gap-3 p-4 w-[200px]">
+                    <ul className="grid gap-3 p-4 w-[200px] ">
                       <li>
                         <Link
                           href="/blocks"
@@ -189,18 +196,23 @@ export function Header() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
+          
           </div>
+          <div className=" w-full flex justify-end pr-8">
+            <button className=" w-20 h-10 bg-[#002DCB] rounded-xl  text-white ">sign In</button>
+            </div>
 
+          {/* User actions */}
           <div className="flex items-center gap-4">
             {/* Mobile menu */}
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="md:hidden">
                   <Menu className="h-4 w-4" />
-                </Button>
+                </Button> 
               </SheetTrigger>
               <SheetContent>
-                <div className="grid gap-4 py-4">
+                <div className="grid gap-4 py-4"> 
                   <Link href="/" className="text-sm">
                     Home
                   </Link>
@@ -242,20 +254,70 @@ export function Header() {
           </div>
         </div>
 
+        <div className="m-10 flex flex-col items-center justify-center text-white font-bold text-center">
+          <h2 className="flex gap-2text-[20px] rounded-full bg-white/50 px-2 py-1 "  ><img src="Logo.png" className="w-6 h-6 px-1 py-1"/> Helios Explorer</h2>
+          <h1 className="flex mt-5  text-[40px]">Welcome to Heli
+           
+            <img src="Logo.png" className="w-8 h-8 translate-y-4"/>s Explorer
+
+            </h1>
+        </div>    
+        {/* <img src="/Vector.png" alt="" />     */}
         {/* Search bar */}
-        <div className="py-5">
-          <form onSubmit={handleSearch}>
+        <div className="flex justify-center py-5  h-[65] ">
+          <form onSubmit={handleSearch} className="w-[960]">
             <div className="relative">
-              <Search className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground" />
+              <Search className="absolute left-3 top-3.5 h-5 w-5 text-muted-foreground " />
               <Input
                 placeholder="Search by Address / Txn Hash / Block / Token / Domain Name"
-                className="pl-10 h-12"
+                className="pl-10 h-12 w-full rounded-[30] text-white"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
           </form>
         </div>
+           {/* Total TVL */}
+            <div className="flex justify-center gap-10  mt-10 ">
+             <div className="w-[632] h-[193] bg-white/5 rounded-3xl flex">
+             <div>
+              <div>
+              <div className="text-white/50 inline-flex m-4 ">Total TVL </div>
+              <div className=" inline-flex  items-center gap 3 text-sm rounded-xl bg-green-500/10  text-green-500  "> 
+              {"+4.50%"}
+              </div>
+              </div>
+              <div className="text-white text-5xl flex items-center gap-2 m-3"><DollarSign className="w-[50] h-[50]"/>14,772,525</div>
+              <div className="text-white/50 m-5 text ">Restaked Assets: 145 Tokens</div>
+             </div>
+              <div className="w-[260] h-[153] bg-white/10 rounded-2xl  border border-none m-4 flex items-center ml-auto">
+             <img src="Vector@.png" className="pt-5" /></div>
+            </div>
+              
+            
+                
+            <div className="w-[632] h-[193] bg-white/5 rounded-3xl flex">
+             <div>
+              <div>
+              <div className="text-white/50 inline-flex m-4 ">Active Validators </div>
+              <div className=" inline-flex  items-center gap 3 text-sm rounded-xl bg-green-500/10  text-green-500  "> 
+              {"+4.50%"}
+              </div>
+              </div>
+              <div className="text-white text-5xl flex items-center gap-2 m-3"><DollarSign className="w-[50] h-[50]"/>54,858,9925</div>
+              <div className="text-white/50 m-5 text ">Governance Votes: 478,655,021</div>
+             </div>
+              <div className="w-[260] h-[153] bg-white/10 rounded-2xl  border border-none m-4 flex items-center ml-auto">
+             <img src="Vector@.png" className="pt-5" /></div>
+            </div>
+              
+                  
+            </div>
+        </div>
+        <div className="flex justify-center ml-20 mt-[-40] w-79 h-79 ">
+          <img src="Group 2.png" className="bg-white rounded-full p-3" />
+        </div>
+
       </div>
     </header>
   );
